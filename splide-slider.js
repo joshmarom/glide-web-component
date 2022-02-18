@@ -1,10 +1,5 @@
-/**
- * @license
- * Copyright 2019 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-
 import {LitElement, html, css} from 'lit';
+import Splide from '@splidejs/splide';
 
 /**
  * An example element.
@@ -13,7 +8,7 @@ import {LitElement, html, css} from 'lit';
  * @slot - This element has a slot
  * @csspart button - The button
  */
-export class MyElement extends LitElement {
+export class SplideSlider extends LitElement {
   static get styles() {
     return css`
       :host {
@@ -72,4 +67,4 @@ export class MyElement extends LitElement {
   }
 }
 
-window.customElements.define('my-element', MyElement);
+window.customElements.define('splide-slider', GlideSlider);

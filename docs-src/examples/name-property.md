@@ -1,15 +1,15 @@
 ---
 layout: example.11ty.cjs
-title: <my-element> ⌲ Examples ⌲ Name Property
+title: <splide-slider> ⌲ Examples ⌲ Name Property
 tags: example
 name: Name Property
 description: Setting the name property
 ---
 
-<my-element name="Earth"></my-element>
+<splide-slider name="Earth"></splide-slider>
 
 <h3>HTML</h3>
 
 ```html
-<my-element name="Earth"></my-element>
+<splide-slider name="Earth"></splide-slider>
 ```
