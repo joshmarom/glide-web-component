@@ -1,70 +1,73 @@
 import {LitElement, html, css} from 'lit';
 import Splide from '@splidejs/splide';
+import splideProps from './splide-props';
 
 /**
- * An example element.
- *
- * @fires count-changed - Indicates when the count changes
- * @slot - This element has a slot
- * @csspart button - The button
+ * A Wrapper custom element for Splide.js.
  */
 export class SplideSlider extends LitElement {
-  static get styles() {
-    return css`
-      :host {
-        display: block;
-        border: solid 1px gray;
-        padding: 16px;
-        max-width: 800px;
-      }
-    `;
-  }
+    static get styles() {
+        return css`
+            :host { display: block;}
+        `;
+    }
 
-  static get properties() {
-    return {
-      /**
-       * The name to say "Hello" to.
-       * @type {string}
-       */
-      name: {type: String},
+    static properties = {
+        options: {type: Object},
+        splide: {type: Object},
+        slides: {type: Array},
+        ...splideProps
+    }
 
-      /**
-       * The number of times the button has been clicked.
-       * @type {number}
-       */
-      count: {type: Number},
-    };
-  }
+    constructor() {
+        super();
+        this.options = {};
+        this.slides = [ ...this.children].map(slide => {
+            slide.classList.add('splide__slide');
+            slide.setAttribute('part', '' );
+            return slide;
+        });
+    }
 
-  constructor() {
-    super();
-    this.name = 'World';
-    this.count = 0;
-  }
+    updateOptions( options ) {
+        [ ...options.keys() ].forEach( option => {
+            if ( [ 'options', 'splide', 'slides' ].includes( option ) ) return
+            if ( this[option] === undefined ) return
+
+            this.options[option] = this[option];
+        });
+    }
+
+    updated(_changedProperties) {
+        super.updated(_changedProperties);
+        this.updateOptions(_changedProperties);
+
+        this.splide.options = this.options;
+    }
+
+    firstUpdated(_changedProperties) {
+        super.firstUpdated(_changedProperties);
+        this.updateOptions(_changedProperties);
+
+        const el = this.shadowRoot.querySelector('.splide');
+        this.splide = new Splide( el, this.options ).mount();
+    }
 
   render() {
+    const cssUrl = 'https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css';
+    const css = html`<link rel="stylesheet" href="${cssUrl}" />`;
+
     return html`
-      <h1>${this.sayHello(this.name)}!</h1>
-      <button @click=${this._onClick} part="button">
-        Click Count: ${this.count}
-      </button>
-      <slot></slot>
+      ${css}
+      <div class="splide">
+        <div class="splide__track">
+          <div class="splide__list">
+            ${this.slides}
+          </div>
+        </div>
+      </div>
     `;
-  }
-
-  _onClick() {
-    this.count++;
-    this.dispatchEvent(new CustomEvent('count-changed'));
-  }
-
-  /**
-   * Formats a greeting
-   * @param name {string} The name to say "Hello" to
-   * @returns {string} A greeting directed at `name`
-   */
-  sayHello(name) {
-    return `Hello, ${name}`;
   }
 }
 
-window.customElements.define('splide-slider', GlideSlider);
+window.customElements.define('splide-slider', SplideSlider);

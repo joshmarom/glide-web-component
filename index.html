@@ -1,11 +1,85 @@
 <!DOCTYPE html>
-
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Lit Starter Kit</title>
+    <title>Splide Component Demo</title>
+    <script src="ny-times.js" type="module"></script>
+    <style>
+      .my-slider::part(slide) {
+        border-radius: 20px;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
-    <a href="/dev/index.html">Component Demo</a>
+
+  <ny-times search="Tesla" style="max-width:750px; --post-title-size: 1.5rem;"></ny-times>
+
+  <!--
+  <splide-slider class="my-slider" perpage="4" drag="1" gap="1rem">
+    <img src="https://picsum.photos/id/1/800/600" alt="">
+    <img src="https://picsum.photos/id/2/800/600" alt="">
+    <img src="https://picsum.photos/id/3/800/600" alt="">
+    <img src="https://picsum.photos/id/4/800/600" alt="">
+    <img src="https://picsum.photos/id/5/800/600" alt="">
+    <img src="https://picsum.photos/id/6/800/600" alt="">
+    <img src="https://picsum.photos/id/7/800/600" alt="">
+    <img src="https://picsum.photos/id/8/800/600" alt="">
+    <img src="https://picsum.photos/id/9/800/600" alt="">
+    <img src="https://picsum.photos/id/10/800/600" alt="">
+  </splide-slider>
+
+  <my-element myAtribute="Hello!"></my-element>
+
+  <h2>USA Presidents:</h2>
+  <splide-slider perpage="6" drag="free" arrows="0" pagination="0" style="background: darkgray; padding: 1rem;">
+    <span>George Washington</span>
+    <span>John Adams</span>
+    <span>Thomas Jefferson</span>
+    <span>James Madison</span>
+    <span>James Monroe</span>
+    <span>John Quincy Adams</span>
+    <span>Andrew Jackson</span>
+    <span>Martin Van Buren</span>
+    <span>William Henry Harrison</span>
+    <span>John Tyler</span>
+    <span>James K. Polk</span>
+    <span>Zachary Taylor</span>
+    <span>Millard Fillmore</span>
+    <span>Franklin Pierce</span>
+    <span>James Buchanan</span>
+    <span>Abraham Lincoln</span>
+    <span>Andrew Johnson</span>
+    <span>Ulysses S. Grant</span>
+    <span>Rutherford B. Hayes</span>
+    <span>James A. Garfield</span>
+    <span>Chester A. Arthur</span>
+    <span>Grover Cleveland</span>
+    <span>Benjamin Harrison</span>
+    <span>Grover Cleveland</span>
+    <span>William McKinley</span>
+    <span>Theodore Roosevelt</span>
+    <span>William Howard Taft</span>
+    <span>Woodrow Wilson</span>
+    <span>Warren G. Harding</span>
+    <span>Calvin Coolidge</span>
+    <span>Herbert Hoover</span>
+    <span>Franklin D. Roosevelt</span>
+    <span>Harry S. Truman</span>
+    <span>Dwight D. Eisenhower</span>
+    <span>John F. Kennedy</span>
+    <span>Lyndon B. Johnson</span>
+    <span>Richard M. Nixon</span>
+    <span>Gerald R. Ford</span>
+    <span>Jimmy Carter</span>
+    <span>Ronald Reagan</span>
+    <span>George H. W. Bush</span>
+    <span>Bill Clinton</span>
+    <span>George W. Bush</span>
+    <span>Barack H. Obama</span>
+    <span>Donald J. Trump</span>
+    <span>Sleepy Joe</span>
+  </splide-slider>
+  -->
   </body>
 </html>
